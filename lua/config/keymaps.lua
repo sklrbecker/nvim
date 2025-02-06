@@ -1,5 +1,5 @@
 local function map(mode, lhs, rhs)
-  vim.keymap.set(mode, lhs, rhs, { silent = true })
+	vim.keymap.set(mode, lhs, rhs, { silent = true })
 end
 
 -- New Windows
@@ -22,19 +22,16 @@ map("n", "<C-Down>", "<C-w>-")
 map("n", "<S-l>", "<CMD>bnext<CR>")
 map("n", "<S-h>", "<CMD>bprev<CR>")
 
--- Manage Buffers
-map("n", "<leader>bd", "<CMD>Bdelete<CR>")
-
 -- Formatting
 map({ "n", "v" }, "<leader>cf", require("conform").format)
 
 -- Diagnostics
 local diagnostic_goto = function(next, severity)
-  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-  severity = severity and vim.diagnostic.severity[severity] or nil
-  return function()
-    go({ severity = severity })
-  end
+	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+	severity = severity and vim.diagnostic.severity[severity] or nil
+	return function()
+		go({ severity = severity })
+	end
 end
 map("n", "<leader>cd", vim.diagnostic.open_float)
 map("n", "]d", diagnostic_goto(true))
