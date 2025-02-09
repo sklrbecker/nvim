@@ -19,6 +19,7 @@ return {
         "prettier",
         "stylua", -- lua formatter
         "black", -- python formatter
+        "gopls", -- go language server
         "gofumpt", -- go formatter
       },
     })
